@@ -1,0 +1,79 @@
+# Use Case: Xem Chi tiết Khóa học
+
+## Thông tin Chung
+
+- **ID**: UC2.1.4
+- **Tên Use Case**: Người dùng xem chi tiết khóa học
+- **Actor Chính**: Người dùng đã đăng nhập
+- **Actors Phụ**: Không có
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng nhập vào hệ thống
+  - Khóa học đang hoạt động và hiển thị trong hệ thống
+
+## Mô tả
+
+Use case này cho phép người dùng xem thông tin chi tiết của một khóa học trên nền tảng micro-learning, bao gồm nội dung, mục tiêu học tập, và các thông tin liên quan để đưa ra quyết định tham gia khóa học.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng chọn một khóa học từ danh sách
+2. Hệ thống tải và hiển thị thông tin chi tiết khóa học:
+   - Tên khóa học và hình ảnh minh họa
+   - Mô tả tổng quan và mục tiêu học tập
+   - Yêu cầu tiên quyết và đối tượng phù hợp
+   - Nội dung chi tiết và cấu trúc bài học
+   - Thời lượng dự kiến và lộ trình học tập
+   - Thông tin giảng viên và chuyên gia
+   - Đánh giá và phản hồi từ học viên
+   - Học phí và chính sách thanh toán
+3. Hệ thống hiển thị tùy chọn xem trước nội dung mẫu
+4. Hệ thống hiển thị trạng thái khóa học với người dùng
+5. Hệ thống đề xuất các khóa học liên quan
+6. Hệ thống cập nhật lịch sử xem khóa học
+
+## Luồng Sự kiện Thay thế
+
+### A1: Khóa học yêu cầu điều kiện tiên quyết
+
+1. Hệ thống kiểm tra điều kiện tiên quyết của người dùng
+2. Hệ thống hiển thị thông báo về các yêu cầu chưa đáp ứng
+3. Hệ thống đề xuất các khóa học cần hoàn thành trước
+
+### A2: Lỗi tải thông tin khóa học
+
+1. Hệ thống hiển thị thông báo lỗi
+2. Hệ thống tự động thử tải lại
+3. Hiển thị thông tin từ bộ nhớ cache (nếu có)
+4. Cung cấp nút "Tải lại" cho người dùng
+
+### A3: Khóa học tạm ngưng
+
+1. Hệ thống hiển thị thông báo tạm ngưng
+2. Hệ thống giải thích lý do và thời gian dự kiến mở lại
+3. Hệ thống đề xuất các khóa học thay thế
+
+## Điều kiện Sau
+
+- Người dùng nắm được thông tin chi tiết về khóa học
+- Hệ thống ghi nhận lượt xem khóa học
+- Thông tin được lưu vào lịch sử duyệt của người dùng
+
+## Yêu cầu Đặc biệt
+
+- Thời gian tải trang chi tiết < 2 giây
+- Hỗ trợ xem nội dung mẫu không giới hạn
+- Tối ưu hiển thị trên mọi thiết bị
+- Lưu cache thông tin để xem offline
+
+## Các vấn đề Mở
+
+- Xem xét thêm tính năng chia sẻ khóa học
+- Nghiên cứu khả năng tích hợp đánh giá video
+- Cân nhắc tính năng đặt câu hỏi trực tiếp cho giảng viên
+
+## Business Rules
+
+- Hiển thị đầy đủ thông tin giá trước thuế và phí
+- Chỉ hiện thị đánh giá đã được xác thực
+- Cập nhật thông tin khóa học theo thời gian thực
+- Tuân thủ chính sách bảo vệ bản quyền nội dung

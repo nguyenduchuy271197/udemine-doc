@@ -1,0 +1,75 @@
+# Use Case: Xác thực Email Người dùng
+
+## Thông tin Chung
+
+- **ID**: UC1.1.2
+- **Tên Use Case**: Người dùng xác thực email
+- **Actor Chính**: Người dùng đã đăng ký
+- **Actors Phụ**: Hệ thống email
+
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng ký tài khoản thành công
+  - Email xác thực đã được gửi đến địa chỉ email đăng ký
+
+## Mô tả
+
+Use case này cho phép người dùng xác thực địa chỉ email của họ sau khi đăng ký tài khoản trên nền tảng micro-learning.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng nhận email xác thực từ hệ thống
+2. Người dùng mở email và nhấn vào liên kết xác thực
+3. Hệ thống kiểm tra tính hợp lệ của liên kết xác thực:
+   - Token xác thực
+   - Thời gian hiệu lực
+   - Trạng thái xác thực hiện tại
+4. Hệ thống cập nhật trạng thái xác thực của tài khoản
+5. Hệ thống hiển thị trang thông báo xác thực thành công
+6. Hệ thống chuyển hướng người dùng đến trang đăng nhập
+7. Hệ thống gửi email thông báo xác thực thành công
+
+## Luồng Sự kiện Thay thế
+
+### A1: Liên kết xác thực hết hạn (ở bước 3)
+
+1. Hệ thống phát hiện liên kết đã hết hạn
+2. Hệ thống hiển thị trang thông báo lỗi với tùy chọn gửi lại email xác thực
+3. Người dùng yêu cầu gửi lại email xác thực
+4. Hệ thống tạo liên kết xác thực mới
+5. Hệ thống gửi email xác thực mới
+6. Quay lại bước 1
+
+### A2: Email đã được xác thực trước đó (ở bước 3)
+
+1. Hệ thống phát hiện email đã được xác thực
+2. Hệ thống hiển thị thông báo và chuyển hướng đến trang đăng nhập
+
+### A3: Token không hợp lệ (ở bước 3)
+
+1. Hệ thống phát hiện token không hợp lệ
+2. Hệ thống hiển thị trang thông báo lỗi
+3. Hệ thống ghi log sự cố để kiểm tra bảo mật
+
+## Điều kiện Sau
+
+- Tài khoản người dùng được đánh dấu là đã xác thực
+- Người dùng có thể truy cập đầy đủ tính năng của hệ thống
+- Hệ thống lưu thời gian xác thực email
+
+## Yêu cầu Đặc biệt
+
+- Thời gian hiệu lực của liên kết xác thực: 24 giờ
+- Mã token phải được mã hóa và không thể đoán trước
+- Thời gian xử lý xác thực < 2 giây
+- Email thông báo xác thực thành công phải được gửi trong vòng 1 phút
+
+## Các vấn đề Mở
+
+- Cân nhắc thêm tính năng tự động gửi lại email xác thực sau một khoảng thời gian
+
+## Business Rules
+
+- Tài khoản chưa xác thực email chỉ có thể truy cập các tính năng cơ bản
+- Hệ thống chỉ cho phép gửi lại email xác thực tối đa 3 lần trong 24 giờ
+- Token xác thực phải là duy nhất cho mỗi lần gửi
+- Lưu trữ lịch sử xác thực để phục vụ kiểm tra bảo mật

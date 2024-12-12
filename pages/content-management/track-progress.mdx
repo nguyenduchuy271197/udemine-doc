@@ -1,0 +1,85 @@
+# Use Case: Theo dõi Tiến độ Khóa học
+
+## Thông tin Chung
+
+- **ID**: UC2.1.5
+- **Tên Use Case**: Người dùng theo dõi tiến độ khóa học
+- **Actor Chính**: Người dùng đã đăng ký khóa học
+- **Actors Phụ**: Không có
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng nhập vào hệ thống
+  - Người dùng đã đăng ký ít nhất một khóa học
+  - Khóa học đang trong quá trình học tập
+
+## Mô tả
+
+Use case này cho phép người dùng theo dõi tiến độ học tập của họ trong các khóa học đã đăng ký trên nền tảng micro-learning, bao gồm việc xem tổng quan tiến độ, thành tích học tập, và các chỉ số học tập quan trọng khác.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng truy cập trang theo dõi tiến độ học tập
+2. Hệ thống hiển thị tổng quan tiến độ với các thông tin:
+   - Phần trăm hoàn thành khóa học
+   - Số bài học đã hoàn thành
+   - Thời gian học tập tích lũy
+   - Điểm số các bài kiểm tra
+   - Streak học tập hiện tại
+3. Hệ thống hiển thị chi tiết tiến độ từng phần:
+   - Danh sách bài học đã hoàn thành
+   - Thời gian hoàn thành mỗi bài
+   - Kết quả bài kiểm tra
+   - Ghi chú cá nhân
+4. Hệ thống hiển thị các chỉ số phân tích:
+   - Biểu đồ tiến độ theo thời gian
+   - So sánh với mục tiêu đề ra
+   - Dự đoán thời gian hoàn thành
+5. Hệ thống đề xuất kế hoạch học tập tiếp theo
+6. Hệ thống tự động lưu và cập nhật tiến độ
+
+## Luồng Sự kiện Thay thế
+
+### A1: Chưa có tiến độ học tập
+
+1. Hệ thống phát hiện người dùng chưa bắt đầu học
+2. Hệ thống hiển thị hướng dẫn bắt đầu
+3. Hệ thống đề xuất lộ trình học tập phù hợp
+
+### A2: Tiến độ học tập chậm
+
+1. Hệ thống phát hiện tiến độ dưới mục tiêu
+2. Hệ thống hiển thị thông báo nhắc nhở
+3. Hệ thống đề xuất điều chỉnh kế hoạch học tập
+4. Hệ thống gợi ý các nguồn hỗ trợ
+
+### A3: Đồng bộ hóa tiến độ thất bại
+
+1. Hệ thống phát hiện lỗi đồng bộ
+2. Hệ thống lưu tiến độ vào bộ nhớ tạm
+3. Hệ thống tự động thử đồng bộ lại
+4. Hiển thị cảnh báo cho người dùng
+
+## Điều kiện Sau
+
+- Người dùng nắm được tiến độ học tập hiện tại
+- Dữ liệu tiến độ được cập nhật và lưu trữ
+- Kế hoạch học tập được điều chỉnh phù hợp
+
+## Yêu cầu Đặc biệt
+
+- Cập nhật tiến độ theo thời gian thực
+- Đồng bộ hóa giữa các thiết bị
+- Tính toán chính xác các chỉ số học tập
+- Hỗ trợ xuất báo cáo tiến độ
+
+## Các vấn đề Mở
+
+- Xem xét tích hợp hệ thống phân tích học tập nâng cao
+- Nghiên cứu tính năng chia sẻ tiến độ với mentor
+- Cân nhắc thêm tính năng đặt mục tiêu tùy chỉnh
+
+## Business Rules
+
+- Tiến độ phải được tính toán dựa trên các hoạt động thực tế
+- Chỉ tính thời gian học tập khi có tương tác thực tế
+- Tự động cập nhật streak học tập hàng ngày
+- Lưu trữ lịch sử tiến độ trong 12 tháng gần nhất

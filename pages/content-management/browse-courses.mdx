@@ -1,0 +1,83 @@
+# Use Case: Xem Danh sách Khóa học
+
+## Thông tin Chung
+
+- **ID**: UC2.1.1
+- **Tên Use Case**: Người dùng xem danh sách khóa học
+- **Actor Chính**: Người dùng đã đăng nhập
+- **Actors Phụ**: Không có
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng nhập vào hệ thống
+  - Có ít nhất một khóa học trong hệ thống
+
+## Mô tả
+
+Use case này cho phép người dùng xem danh sách các khóa học có sẵn trên nền tảng micro-learning, bao gồm các thông tin tổng quan và tùy chọn lọc, sắp xếp để tìm khóa học phù hợp.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng truy cập trang danh sách khóa học
+2. Hệ thống tải danh sách khóa học với thông tin cơ bản:
+   - Tên khóa học
+   - Hình ảnh minh họa
+   - Mô tả ngắn
+   - Thời lượng ước tính
+   - Mức độ khó
+   - Số người đã đăng ký
+   - Đánh giá trung bình
+3. Hệ thống hiển thị các tùy chọn lọc và sắp xếp:
+   - Theo danh mục
+   - Theo cấp độ
+   - Theo thời lượng
+   - Theo đánh giá
+4. Người dùng có thể cuộn trang để xem thêm khóa học
+5. Hệ thống tự động tải thêm khóa học khi cuộn đến cuối trang
+6. Hệ thống hiển thị trạng thái của khóa học đối với người dùng:
+   - Chưa đăng ký
+   - Đã đăng ký
+   - Đang học
+   - Đã hoàn thành
+
+## Luồng Sự kiện Thay thế
+
+### A1: Không có khóa học nào phù hợp với bộ lọc
+
+1. Hệ thống hiển thị thông báo không tìm thấy khóa học
+2. Hệ thống đề xuất điều chỉnh bộ lọc
+3. Hệ thống hiển thị các khóa học tương tự
+
+### A2: Lỗi tải danh sách khóa học
+
+1. Hệ thống hiển thị thông báo lỗi
+2. Hệ thống tự động thử tải lại sau 5 giây
+3. Hiển thị nút "Tải lại" cho người dùng
+
+### A3: Mất kết nối internet
+
+1. Hệ thống phát hiện mất kết nối
+2. Hệ thống hiển thị các khóa học đã lưu trong bộ nhớ cache
+3. Hiển thị thông báo đang ở chế độ ngoại tuyến
+
+## Điều kiện Sau
+
+- Người dùng có thể xem được danh sách khóa học
+- Thông tin khóa học được hiển thị chính xác
+- Các tùy chọn lọc và sắp xếp hoạt động đúng
+
+## Yêu cầu Đặc biệt
+
+- Thời gian tải danh sách ban đầu < 2 giây
+- Tối ưu hóa hình ảnh để tải nhanh
+- Hỗ trợ xem trên các thiết bị khác nhau
+- Lưu trữ cache để xem ngoại tuyến
+
+## Các vấn đề Mở
+
+- Xem xét thêm tính năng đề xuất khóa học thông minh
+
+## Business Rules
+
+- Chỉ hiển thị các khóa học đang hoạt động
+- Sắp xếp mặc định theo độ phổ biến
+- Giới hạn 20 khóa học mỗi lần tải
+- Tự động lưu bộ lọc người dùng cho lần truy cập sau

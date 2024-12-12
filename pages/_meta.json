@@ -1,7 +1,9 @@
 {
-  "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "index": "Product Brief",
+  "phase-1": "Giai đoạn 1 (MVP)",
+  "use-cases": "Use cases",
+  "user-management": "User Management",
+  "content-management": "Content Management",
   "about": {
     "title": "About",
     "type": "page"

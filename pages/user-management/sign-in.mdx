@@ -1,0 +1,76 @@
+# Use Case: Đăng nhập Hệ thống
+
+## Thông tin Chung
+
+- **ID**: UC1.1.3
+- **Tên Use Case**: Người dùng đăng nhập vào hệ thống
+- **Actor Chính**: Người dùng đã đăng ký
+- **Actors Phụ**: Không có
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã có tài khoản trong hệ thống
+  - Tài khoản đã được xác thực email
+
+## Mô tả
+
+Use case này cho phép người dùng đã đăng ký đăng nhập vào nền tảng micro-learning để truy cập các tính năng và nội dung học tập.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng truy cập trang đăng nhập
+2. Hệ thống hiển thị form đăng nhập với các trường:
+   - Địa chỉ email
+   - Mật khẩu
+   - Tùy chọn "Ghi nhớ đăng nhập"
+3. Người dùng nhập thông tin đăng nhập
+4. Người dùng nhấn nút "Đăng nhập"
+5. Hệ thống xác thực thông tin đăng nhập
+6. Hệ thống tạo phiên làm việc mới
+7. Hệ thống ghi nhận thời gian và thiết bị đăng nhập
+8. Hệ thống chuyển hướng người dùng đến trang chủ
+9. Hệ thống hiển thị thông báo đăng nhập thành công
+
+## Luồng Sự kiện Thay thế
+
+### A1: Thông tin đăng nhập không chính xác (ở bước 5)
+
+1. Hệ thống phát hiện email hoặc mật khẩu không chính xác
+2. Hệ thống ghi nhận số lần đăng nhập thất bại
+3. Hệ thống hiển thị thông báo lỗi
+4. Quay lại bước 3
+
+### A2: Tài khoản bị khóa (ở bước 5)
+
+1. Hệ thống phát hiện tài khoản đang bị khóa
+2. Hệ thống hiển thị thông báo và hướng dẫn liên hệ hỗ trợ
+3. Hệ thống ghi log sự cố
+
+### A3: Quá nhiều lần đăng nhập thất bại (ở bước 5)
+
+1. Hệ thống phát hiện vượt quá số lần đăng nhập thất bại cho phép
+2. Hệ thống tạm khóa tài khoản trong 30 phút
+3. Hệ thống hiển thị thông báo và hướng dẫn khôi phục mật khẩu
+4. Hệ thống gửi email thông báo cho người dùng
+
+## Điều kiện Sau
+
+- Người dùng được cấp phiên làm việc hợp lệ
+- Người dùng có thể truy cập các tính năng của hệ thống
+- Hệ thống lưu thông tin đăng nhập cho mục đích bảo mật
+
+## Yêu cầu Đặc biệt
+
+- Thời gian xử lý đăng nhập < 2 giây
+- Mật khẩu phải được mã hóa khi truyền tải
+- Phiên làm việc phải có thời gian hiệu lực
+- Hỗ trợ đăng nhập trên nhiều thiết bị cùng lúc
+
+## Các vấn đề Mở
+
+- Xem xét thêm đăng nhập bằng mạng xã hội
+
+## Business Rules
+
+- Giới hạn 5 lần đăng nhập thất bại liên tiếp
+- Thời gian hiệu lực của phiên làm việc: 24 giờ
+- Tự động đăng xuất sau 30 phút không hoạt động
+- Lưu lịch sử đăng nhập cho mục đích kiểm tra bảo mật

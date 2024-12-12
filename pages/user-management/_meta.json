@@ -1,0 +1,7 @@
+{
+  "sign-up": "Use Case: Đăng ký tài khoản người dùng mới",
+  "verify-email": "Use Case: Xác thực Email Người dùng",
+  "sign-in": "Use Case: Người dùng đăng nhập vào hệ thống",
+  "update-profile": "Use Case: Người dùng cập nhật thông tin cá nhân",
+  "update-password": "Use Case: Người dùng thay đổi mật khẩu"
+}

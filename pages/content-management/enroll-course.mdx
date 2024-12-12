@@ -1,0 +1,81 @@
+# Use Case: Đăng ký Khóa học
+
+## Thông tin Chung
+
+- **ID**: UC2.1.3
+- **Tên Use Case**: Người dùng đăng ký khóa học
+- **Actor Chính**: Người dùng đã đăng nhập
+- **Actors Phụ**: Hệ thống thanh toán
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng nhập vào hệ thống
+  - Khóa học đang mở đăng ký
+  - Tài khoản người dùng trong trạng thái hoạt động
+
+## Mô tả
+
+Use case này cho phép người dùng đăng ký tham gia một khóa học trên nền tảng micro-learning, bao gồm các bước xác nhận đăng ký, thanh toán (nếu có), và thiết lập quyền truy cập vào nội dung khóa học.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng chọn khóa học muốn đăng ký
+2. Hệ thống hiển thị trang chi tiết đăng ký với thông tin:
+   - Tổng quan khóa học
+   - Học phí (nếu có)
+   - Phương thức thanh toán
+   - Chính sách hoàn trả
+   - Điều khoản và điều kiện
+3. Người dùng xác nhận đồng ý với điều khoản
+4. Người dùng chọn phương thức thanh toán (nếu có phí)
+5. Hệ thống xử lý thanh toán
+6. Hệ thống tạo quyền truy cập khóa học
+7. Hệ thống gửi email xác nhận đăng ký
+8. Hệ thống chuyển hướng đến trang khóa học
+9. Hệ thống hiển thị hướng dẫn bắt đầu học
+
+## Luồng Sự kiện Thay thế
+
+### A1: Thanh toán không thành công (ở bước 5)
+
+1. Hệ thống phát hiện lỗi thanh toán
+2. Hệ thống hiển thị thông báo lỗi cụ thể
+3. Hệ thống đề xuất phương thức thanh toán thay thế
+4. Quay lại bước 4
+
+### A2: Khóa học đã đầy (ở bước 6)
+
+1. Hệ thống phát hiện khóa học đã đạt số lượng tối đa
+2. Hệ thống hiển thị thông báo và tùy chọn vào danh sách chờ
+3. Hệ thống hoàn lại tiền (nếu đã thanh toán)
+
+### A3: Đăng ký trùng lặp (ở bước 6)
+
+1. Hệ thống phát hiện người dùng đã đăng ký khóa học
+2. Hệ thống hiển thị thông báo và chuyển hướng đến trang khóa học
+3. Hệ thống không thực hiện thanh toán mới
+
+## Điều kiện Sau
+
+- Người dùng được cấp quyền truy cập khóa học
+- Thông tin thanh toán được ghi nhận (nếu có)
+- Email xác nhận được gửi đến người dùng
+- Khóa học xuất hiện trong danh sách khóa học của người dùng
+
+## Yêu cầu Đặc biệt
+
+- Thời gian xử lý đăng ký < 30 giây
+- Bảo mật thông tin thanh toán
+- Xác nhận đăng ký qua email trong vòng 5 phút
+- Hỗ trợ nhiều phương thức thanh toán
+
+## Các vấn đề Mở
+
+- Xem xét tích hợp chương trình khuyến mãi
+- Nghiên cứu tính năng đăng ký theo nhóm
+- Cân nhắc tính năng đặt trước khóa học
+
+## Business Rules
+
+- Kiểm tra điều kiện tiên quyết của khóa học
+- Áp dụng chính sách hoàn tiền trong 7 ngày
+- Giới hạn số lượng đăng ký đồng thời
+- Tuân thủ quy định về bảo vệ người tiêu dùng

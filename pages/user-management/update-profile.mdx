@@ -1,0 +1,76 @@
+# Use Case: Cập nhật Thông tin Cá nhân
+
+## Thông tin Chung
+
+- **ID**: UC1.2.1
+- **Tên Use Case**: Người dùng cập nhật thông tin cá nhân
+- **Actor Chính**: Người dùng đã đăng nhập
+- **Actors Phụ**: Không có
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng nhập vào hệ thống
+  - Tài khoản đang trong trạng thái hoạt động
+
+## Mô tả
+
+Use case này cho phép người dùng cập nhật thông tin cá nhân trên nền tảng micro-learning để duy trì hồ sơ học tập chính xác và cá nhân hóa trải nghiệm học tập.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng truy cập trang hồ sơ cá nhân
+2. Người dùng chọn tùy chọn "Chỉnh sửa thông tin"
+3. Hệ thống hiển thị form cập nhật với các trường thông tin:
+   - Họ tên đầy đủ
+   - Ảnh đại diện
+   - Ngày sinh
+   - Số điện thoại
+   - Lĩnh vực quan tâm
+   - Mục tiêu học tập
+   - Ngôn ngữ ưu tiên
+4. Người dùng cập nhật thông tin cần thiết
+5. Người dùng nhấn nút "Lưu thay đổi"
+6. Hệ thống kiểm tra tính hợp lệ của thông tin
+7. Hệ thống lưu thông tin mới vào cơ sở dữ liệu
+8. Hệ thống cập nhật cache và các dữ liệu liên quan
+9. Hệ thống hiển thị thông báo cập nhật thành công
+
+## Luồng Sự kiện Thay thế
+
+### A1: Thông tin không hợp lệ (ở bước 6)
+
+1. Hệ thống phát hiện thông tin không đáp ứng yêu cầu
+2. Hệ thống hiển thị thông báo lỗi cụ thể
+3. Hệ thống giữ nguyên các trường thông tin hợp lệ
+4. Quay lại bước 4
+
+### A2: Lỗi tải ảnh đại diện (ở bước 6)
+
+1. Hệ thống phát hiện ảnh không đúng định dạng hoặc kích thước
+2. Hệ thống hiển thị thông báo lỗi
+3. Giữ nguyên ảnh đại diện cũ
+4. Quay lại bước 4
+
+### A3: Lỗi kết nối (ở bước 7)
+
+1. Hệ thống phát hiện lỗi kết nối
+2. Hệ thống lưu thông tin vào bộ nhớ tạm
+3. Hệ thống hiển thị thông báo lỗi và tùy chọn thử lại
+4. Tự động thử lại khi có kết nối
+
+## Điều kiện Sau
+
+- Thông tin cá nhân được cập nhật trong hệ thống
+- Các tính năng liên quan được cập nhật theo thông tin mới
+- Lưu lịch sử thay đổi thông tin
+
+## Yêu cầu Đặc biệt
+
+- Thời gian xử lý cập nhật < 3 giây
+- Ảnh đại diện phải được tối ưu hóa kích thước
+- Hỗ trợ đa ngôn ngữ cho các trường thông tin
+- Tự động lưu bản nháp khi đang chỉnh sửa
+
+## Business Rules
+
+- Giới hạn kích thước và định dạng ảnh đại diện
+- Kiểm tra tính hợp lệ của số điện thoại theo định dạng quốc tế
+- Tuân thủ quy định GDPR về lưu trữ thông tin cá nhân

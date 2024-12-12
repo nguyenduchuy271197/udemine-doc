@@ -1,0 +1,80 @@
+# Use Case: Xem Bài học
+
+## Thông tin Chung
+
+- **ID**: UC2.2.1
+- **Tên Use Case**: Người dùng xem bài học
+- **Actor Chính**: Người dùng đã đăng ký khóa học
+- **Actors Phụ**: Không có
+- **Điều kiện Tiên quyết**:
+  - Người dùng đã đăng nhập vào hệ thống
+  - Người dùng đã đăng ký khóa học chứa bài học
+  - Bài học đã được mở khóa trong lộ trình học tập
+
+## Mô tả
+
+Use case này cho phép người dùng truy cập và học tập nội dung của một bài học cụ thể trong khóa học đã đăng ký trên nền tảng micro-learning, bao gồm việc xem nội dung đa phương tiện, tương tác với bài học, và ghi nhận tiến độ học tập.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng chọn bài học từ danh sách bài học trong khóa học
+2. Hệ thống kiểm tra điều kiện tiên quyết của bài học
+3. Hệ thống tải và hiển thị nội dung bài học:
+   - Tiêu đề và mục tiêu học tập
+   - Thời lượng ước tính
+   - Nội dung đa phương tiện (video, audio, văn bản)
+   - Tài liệu bổ sung
+   - Bài tập tương tác
+4. Hệ thống theo dõi tiến trình xem nội dung
+5. Hệ thống tự động lưu vị trí học tập
+6. Hệ thống cập nhật trạng thái hoàn thành khi người dùng kết thúc bài học
+7. Hệ thống gợi ý bài học tiếp theo
+
+## Luồng Sự kiện Thay thế
+
+### A1: Bài học yêu cầu hoàn thành bài học trước
+
+1. Hệ thống phát hiện các bài học tiên quyết chưa hoàn thành
+2. Hệ thống hiển thị thông báo và danh sách bài học cần hoàn thành
+3. Hệ thống đề xuất lộ trình học tập phù hợp
+
+### A2: Lỗi tải nội dung bài học
+
+1. Hệ thống phát hiện lỗi tải nội dung
+2. Hệ thống hiển thị nội dung từ bộ nhớ cache (nếu có)
+3. Hệ thống tự động thử tải lại
+4. Hiển thị tùy chọn báo cáo lỗi
+
+### A3: Mất kết nối internet
+
+1. Hệ thống phát hiện mất kết nối
+2. Hệ thống chuyển sang chế độ offline (nếu đã tải nội dung)
+3. Hệ thống lưu tiến độ học tập vào bộ nhớ cục bộ
+4. Đồng bộ hóa khi có kết nối trở lại
+
+## Điều kiện Sau
+
+- Tiến độ xem bài học được ghi nhận
+- Trạng thái hoàn thành được cập nhật
+- Thời gian học tập được tính vào tổng thời gian khóa học
+- Bài học tiếp theo được mở khóa (nếu có)
+
+## Yêu cầu Đặc biệt
+
+- Thời gian tải nội dung bài học < 3 giây
+- Hỗ trợ tự động điều chỉnh chất lượng video theo băng thông
+- Lưu vị trí xem cuối cùng để tiếp tục sau khi thoát
+- Cho phép tải nội dung để học offline
+
+## Các vấn đề Mở
+
+- Xem xét thêm tính năng ghi chú trong bài học
+- Nghiên cứu khả năng tương tác trực tiếp với giảng viên
+- Cân nhắc tích hợp công cụ dịch đa ngôn ngữ
+
+## Business Rules
+
+- Chỉ cho phép xem bài học theo đúng lộ trình
+- Yêu cầu xem tối thiểu 80% nội dung để đánh dấu hoàn thành
+- Giới hạn số lần tải về cho học offline
+- Tuân thủ quy định về bản quyền nội dung

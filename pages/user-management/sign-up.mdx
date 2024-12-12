@@ -1,0 +1,74 @@
+# Use Case: Đăng ký tài khoản người dùng mới
+
+## Thông tin Chung
+
+- **ID**: UC1.1.1
+- **Tên Use Case**: Người dùng đăng ký tài khoản mới với email
+- **Actor Chính**: Người dùng chưa đăng ký
+- **Actors Phụ**: Hệ thống email
+- **Điều kiện Tiên quyết**: Không có
+
+## Mô tả
+
+Use case này cho phép người dùng mới tạo tài khoản trên nền tảng micro-learning bằng địa chỉ email của họ.
+
+## Luồng Sự kiện Chính
+
+1. Người dùng truy cập trang đăng ký
+2. Hệ thống hiển thị form đăng ký với các trường:
+   - Họ tên đầy đủ
+   - Địa chỉ email
+   - Mật khẩu
+   - Xác nhận mật khẩu
+3. Người dùng điền thông tin vào form
+4. Người dùng đồng ý với điều khoản sử dụng và chính sách bảo mật
+5. Người dùng nhấn nút "Đăng ký"
+6. Hệ thống kiểm tra và xác thực thông tin đăng ký
+7. Hệ thống tạo tài khoản mới
+8. Hệ thống gửi email xác thực đến địa chỉ email đã đăng ký
+9. Hệ thống hiển thị thông báo đăng ký thành công và hướng dẫn xác thực email
+
+## Luồng Sự kiện Thay thế
+
+### A1: Email đã tồn tại (ở bước 6)
+
+1. Hệ thống phát hiện email đã được sử dụng
+2. Hệ thống hiển thị thông báo lỗi
+3. Quay lại bước 3
+
+### A2: Mật khẩu không khớp (ở bước 6)
+
+1. Hệ thống phát hiện mật khẩu và xác nhận mật khẩu không khớp
+2. Hệ thống hiển thị thông báo lỗi
+3. Quay lại bước 3
+
+### A3: Email không hợp lệ (ở bước 6)
+
+1. Hệ thống phát hiện định dạng email không hợp lệ
+2. Hệ thống hiển thị thông báo lỗi
+3. Quay lại bước 3
+
+## Điều kiện Sau
+
+- Tài khoản người dùng được tạo trong hệ thống
+- Email xác thực được gửi đến người dùng
+- Người dùng cần xác thực email trước khi có thể sử dụng đầy đủ tính năng
+
+## Yêu cầu Đặc biệt
+
+- Thời gian phản hồi của hệ thống < 2 giây
+- Email xác thực phải được gửi trong vòng 1 phút
+- Mật khẩu phải đáp ứng các yêu cầu bảo mật:
+  - Ít nhất 8 ký tự
+  - Bao gồm chữ hoa, chữ thường, số
+  - Không chứa thông tin cá nhân dễ đoán
+
+## Các vấn đề Mở
+
+- Xem xét thêm đăng ký qua mạng xã hội trong phiên bản sau
+
+## Business Rules
+
+- Một địa chỉ email chỉ có thể đăng ký một tài khoản
+- Tài khoản chưa xác thực email sẽ bị hạn chế quyền truy cập
+- Thông tin đăng ký phải tuân thủ GDPR và các quy định bảo vệ dữ liệu

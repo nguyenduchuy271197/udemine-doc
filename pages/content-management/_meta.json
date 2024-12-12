@@ -1,0 +1,8 @@
+{
+  "browse-courses": "Use case: Người dùng xem danh sách khóa học",
+  "enroll-course": "Use case: Người dùng đăng ký khóa học",
+  "view-course-detail": "Use case: Người dùng xem chi tiết khóa học",
+  "track-progress": "Use case: Người dùng theo dõi tiến độ khóa học",
+  "view-lesson": "Use case: Người dùng xem bài học",
+  "complete-lesson": "Use case: Người dùng hoàn thành bài học"
+}
